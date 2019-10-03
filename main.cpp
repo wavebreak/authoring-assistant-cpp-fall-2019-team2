@@ -10,7 +10,11 @@ using namespace std;
 
 int main() {
 
-   /* Type your code here. */
+   //Enter phrase
+   //user phrase
 
+   //echo it
+
+   // bring in PrintMenu();
    return 0;
 }

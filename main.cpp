@@ -32,12 +32,12 @@ int GetNumOfNonWSCharacters(string words){
 
 }
 //Outputs !'s with .'s
-void ReplaceExclamation(string& repPer) {
+void ReplaceExclamation(string& words) {
     unsigned int i;
 
-    for(i = 0; i < repPer.size(); i++){
-        if(repPer.at(i) == '!'){
-            repPer.at(i) = '.';
+    for(i = 0; i < words.size(); i++){
+        if(words.at(i) == '!'){
+            words.at(i) = '.';
 
         }
 

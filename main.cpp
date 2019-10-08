@@ -1,9 +1,3 @@
-//
-//  main.cpp
-//  
-//
-//  Created by William Smith on 10/2/19.
-//
 #include <iostream>
 #include <string>
 using namespace std;
@@ -35,6 +29,19 @@ int GetNumOfNonWSCharacters(string words){
     numOfNonWSChars = OutputWithoutWhitespace(words).size();
 
     return numOfNonWSChars;
+
+}
+//Outputs !'s with .'s
+void ReplaceExclamation(string& repPer) {
+    unsigned int i;
+
+    for(i = 0; i < repPer.size(); i++){
+        if(repPer.at(i) == '!'){
+            repPer.at(i) = '.';
+
+        }
+
+    }
 
 }
 
@@ -130,6 +137,16 @@ int main() {
         if (answer == 'q'){
             break;
         }
+    
+   string replaceStr;
+   cout<<"Enter text: ";
+   getline(cin, replaceStr);
+
+   ReplaceExclamation(replaceStr);
+
+   cout<<replaceStr;
+
+      
     }
 
     return 0;

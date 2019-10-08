@@ -1,20 +1,23 @@
-//
-//  main.cpp
-//  
-//
-//  Created by William Smith on 10/2/19.
-//
 #include <iostream>
 #include <string>
 using namespace std;
 
 int main() {
 
-   //Enter phrase
-   //user phrase
 
-   //echo it
+    string text;
+    char answer;
 
-   // bring in PrintMenu();
-   return 0;
+    cout << "Enter a sample text:\n";
+    getline(cin, text);
+    cout << endl << "You entered: " << text << endl << endl;
+
+    while(true){
+        answer = PrintMenu(text);
+        if (answer == 'q'){
+            break;
+        }
+    }
+
+    return 0;
 }

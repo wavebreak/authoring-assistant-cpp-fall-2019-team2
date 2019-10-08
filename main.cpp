@@ -33,16 +33,19 @@ int GetNumOfNonWSCharacters(string words){
 }
 //Outputs !'s with .'s
 void ReplaceExclamation(string& words) {
-    unsigned int i;
+    string newString;
+    int index;
 
-    for(i = 0; i < words.size(); i++){
-        if(words.at(i) == '!'){
-            words.at(i) = '.';
+    while(true){
 
+        index = words.find("!");
+        if (index == -1){
+            break;
         }
 
+        words.at(index) = '.';
     }
-
+    return;
 }
 
 //FindText function to find instances in text
@@ -137,16 +140,6 @@ int main() {
         if (answer == 'q'){
             break;
         }
-    
-   string replaceStr;
-   cout<<"Enter text: ";
-   getline(cin, replaceStr);
-
-   ReplaceExclamation(replaceStr);
-
-   cout<<replaceStr;
-
-      
     }
 
     return 0;

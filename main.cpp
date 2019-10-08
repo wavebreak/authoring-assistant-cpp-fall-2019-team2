@@ -60,8 +60,8 @@ void FindText(string findStr, string userStr){
         }
         cout << "\"" << findStr << "\" instances: " << FindText(findStr, userStr);
     }
-
 }
+
 
 //Ouputs the menu and implements the user's selection
 char PrintMenu(string words){

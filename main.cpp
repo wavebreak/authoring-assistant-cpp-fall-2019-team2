@@ -38,6 +38,24 @@ int GetNumOfNonWSCharacters(string words){
 
 }
 
+//FindText function to find instances in text
+void FindText(string findStr, string userStr){
+    int count = 0;
+
+    for (int i = 0; i < userStr.length(); ++i){
+        char v = userStr.at(i);
+        int len = findStr.length();
+        if (v == findStr.at(0)) {
+            string user = userStr.substr(i, len);
+            if (user == findStr) {
+                count++;
+            }
+        }
+        cout << "\"" << findStr << "\" instances: " << FindText(findStr, userStr);
+    }
+
+}
+
 //Ouputs the menu and implements the user's selection
 char PrintMenu(string words){
 
@@ -69,12 +87,11 @@ char PrintMenu(string words){
 
             case 'f': //Placing braces around the case's statements create a scope for variables to be declared
             {
-                string Text;
-                cin.ignore(5, '\n');
+                string findStr;
+                cin.ignore();
                 cout << "Enter a word or phrase to be found:";
-                getline(cin, Text);
-                cout << endl << "\"" << Text << "\"" << " instances: " << FindText(Text, words) << endl << endl;
-                return answer;
+                getline(cin, findStr);
+                FindText(findStr, words);
                 break;
             }
 

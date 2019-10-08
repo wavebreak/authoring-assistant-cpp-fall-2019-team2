@@ -2,6 +2,47 @@
 #include <string>
 using namespace std;
 
+/*
+ *
+ * Shorten spaces function
+ *
+ */
+
+
+//Outputs !'s with .'s
+void ReplaceExclamation(string& words) {
+    string newString;
+    int index;
+
+    while(true){
+
+        index = words.find("!");
+        if (index == -1){
+            break;
+        }
+
+        words.at(index) = '.';
+    }
+    return;
+}
+
+//FindText function to find instances in text
+/*void FindText(string findStr, string userStr){
+    int count = 0;
+
+    for (int i = 0; i < userStr.length(); ++i){
+        char v = userStr.at(i);
+        int len = findStr.length();
+        if (v == findStr.at(0)) {
+            string user = userStr.substr(i, len);
+            if (user == findStr) {
+                count++;
+            }
+        }
+        cout << "\"" << findStr << "\" instances: " << FindText(findStr, userStr);
+    }
+}*/
+
 //Outputs the sting without whitespace
 string OutputWithoutWhitespace(string usrStr) {
 
@@ -21,6 +62,7 @@ string OutputWithoutWhitespace(string usrStr) {
 
     return usrStr;
 }
+
 //Returns the number of non-whitespace characters
 int GetNumOfNonWSCharacters(string words){
 
@@ -31,42 +73,36 @@ int GetNumOfNonWSCharacters(string words){
     return numOfNonWSChars;
 
 }
-//Outputs !'s with .'s
-void ReplaceExclamation(string& words) {
+//Returns the number of words in the string
+int GetNumOfWords(const string usrStr){
+    string String = usrStr;
     string newString;
     int index;
+    int numWords = 1;
 
-    while(true){
+    if (String.size() == 0){
+        return 0;
 
-        index = words.find("!");
-        if (index == -1){
+    }
+    while(true) {
+
+        index = String.find(" ");
+        if (index == -1) {
             break;
         }
 
-        words.at(index) = '.';
-    }
-    return;
-}
+        newString = String.substr(0, index);
+        String.replace(0, index + 1, newString);
 
-//FindText function to find instances in text
-void FindText(string findStr, string userStr){
-    int count = 0;
-
-    for (int i = 0; i < userStr.length(); ++i){
-        char v = userStr.at(i);
-        int len = findStr.length();
-        if (v == findStr.at(0)) {
-            string user = userStr.substr(i, len);
-            if (user == findStr) {
-                count++;
-            }
+        if (String.at(index) != ' '){
+            numWords++;
         }
-        cout << "\"" << findStr << "\" instances: " << FindText(findStr, userStr);
     }
+
+    return numWords;
 }
 
-
-//Ouputs the menu and implements the user's selection
+//Outputs the menu and implements the user's selection
 char PrintMenu(string words){
 
     char answer;
@@ -95,7 +131,7 @@ char PrintMenu(string words){
                 return answer;
                 break;
 
-            case 'f': //Placing braces around the case's statements create a scope for variables to be declared
+            /*case 'f': //Placing braces around the case's statements create a scope for variables to be declared
             {
                 string findStr;
                 cin.ignore();
@@ -103,7 +139,7 @@ char PrintMenu(string words){
                 getline(cin, findStr);
                 FindText(findStr, words);
                 break;
-            }
+            }*/
 
             case 'r':
                 ReplaceExclamation(words);
@@ -111,10 +147,10 @@ char PrintMenu(string words){
                 return answer;
                 break;
 
-            case 's':
+            /*case 's':
                 ShortenSpace(words);
                 cout << "Edited text: " << words << endl << endl;
-                //statements fall through to case q
+                //statements fall through to case q*/
 
             case 'q':
                 return answer;

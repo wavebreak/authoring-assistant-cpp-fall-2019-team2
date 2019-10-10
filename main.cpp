@@ -27,21 +27,29 @@ void ReplaceExclamation(string& words) {
 }
 
 //FindText function to find instances in text
-/*void FindText(string findStr, string userStr){
+void FindText(string findStr, string userStr){
     int count = 0;
+    int count = 0;
+    int firstLetter = userStr.find(findStr.at(0));
+    string compare;
 
-    for (int i = 0; i < userStr.length(); ++i){
-        char v = userStr.at(i);
-        int len = findStr.length();
-        if (v == findStr.at(0)) {
-            string user = userStr.substr(i, len);
-            if (user == findStr) {
-                count++;
-            }
+    while(firstLetter != -1){
+        for (int i = 0; i < findStr.length(); ++i){
+
+            compare += userStr.at(firstLetter + i);
         }
-        cout << "\"" << findStr << "\" instances: " << FindText(findStr, userStr);
+
+
+        if (compare == findStr) {
+            count ++;
+        }
+        compare = "";
+        firstLetter = userStr.find(findStr.at(0), firstLetter + 1);
     }
-}*/
+
+    cout << "\"" << findStr << "\" instances: " << count << endl;
+
+}
 
 //Outputs the sting without whitespace
 string OutputWithoutWhitespace(string usrStr) {
@@ -131,7 +139,7 @@ char PrintMenu(string words){
                 return answer;
                 break;
 
-            /*case 'f': //Placing braces around the case's statements create a scope for variables to be declared
+            case 'f': //Placing braces around the case's statements create a scope for variables to be declared
             {
                 string findStr;
                 cin.ignore();
@@ -139,7 +147,7 @@ char PrintMenu(string words){
                 getline(cin, findStr);
                 FindText(findStr, words);
                 break;
-            }*/
+            }
 
             case 'r':
                 ReplaceExclamation(words);

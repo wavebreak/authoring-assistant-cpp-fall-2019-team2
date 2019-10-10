@@ -2,13 +2,6 @@
 #include <string>
 using namespace std;
 
-/*
- *
- * Shorten spaces function
- *
- */
-
-
 //Outputs !'s with .'s
 void ReplaceExclamation(string& words) {
     string newString;
@@ -28,7 +21,6 @@ void ReplaceExclamation(string& words) {
 
 //FindText function to find instances in text
 void FindText(string findStr, string userStr){
-    int count = 0;
     int count = 0;
     int firstLetter = userStr.find(findStr.at(0));
     string compare;
@@ -110,6 +102,39 @@ int GetNumOfWords(const string usrStr){
     return numWords;
 }
 
+// removes spaces if there are two or more in a row
+string ShortenSpace(string userString){
+
+    string tempString;
+
+    // add first element of user string to empty string
+    tempString.push_back(userString.at(0));
+
+    // begin loop comparing further characters to previous character; i = 1
+    for (int i = 1; i < userString.length(); i++){
+
+        // check if current character is a space
+        if (isspace(userString.at(i))){
+
+            // if character was a space, check to see if previous character was not a space
+            if (!isspace(userString.at(i - 1))){
+
+                // if previous was not a space, add current character to end of tempString
+                tempString.push_back(userString.at(i));
+
+            }
+
+        }
+        else{
+            tempString.push_back(userString.at(i));
+        }
+
+    }
+
+    return tempString;
+
+}
+
 //Outputs the menu and implements the user's selection
 char PrintMenu(string words){
 
@@ -155,10 +180,11 @@ char PrintMenu(string words){
                 return answer;
                 break;
 
-            /*case 's':
-                ShortenSpace(words);
-                cout << "Edited text: " << words << endl << endl;
-                //statements fall through to case q*/
+            case 's':
+                //ShortenSpace(words);
+                cout << "Edited text: " << ShortenSpace(words) << endl << endl;
+                break;
+                    //statements fall through to case q*/
 
             case 'q':
                 return answer;
